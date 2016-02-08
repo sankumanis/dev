@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import sys
 
 argCount = len(sys.argv)
