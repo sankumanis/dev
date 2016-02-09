@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<project name="HelloWorld" basedir="." default="info">
+    <property name="userName" value="sanku" />
+    <property file="build.properties.${environmentName}" />
+    <property name="dist" value="${basedir}/target" />
+    <property name="src.dir" value="${basedir}/src" />
+    <property name="config.dir" value="${basedir}/config" />
+    <target name="info">
+        <echo>Hello World from [ ${ant.file} ]. developed by [ ${userName} ]</echo>
+        <echo>User's last name = [${user.last.name}]</echo>
+    </target>
+     <target name = "usage">
+      <echo message = ""/>
+      <echo message = "${userName} build file"/>
+      <echo message = "-----------------------------------"/>
+      <echo message = ""/>
+      <echo message = "Available targets are:"/>
+      <echo message = ""/>
+      <echo message = "deploy    --> Deploy application as directory"/>
+      <echo message = "deploywar --> Deploy application as a WAR file"/>
+      <echo message = ""/>
+   </target>
+   
+   <target name="package" depends="clean">
+       <mkdir dir="${dist}" />
+       <zip destfile="${dist}/${ant.project.name}.zip">
+        <zipfileset dir="${src.dir}" includes="*.py" prefix="run" filemode="755" dirmode="755"/>
+        <zipfileset dir="${config.dir}" includes="*.ini" prefix="config" filemode="777" dirmode="755"/>
+       </zip>
+       
+   </target>
+   
+   <target name="clean">
+       <delete dir="target"/>
+       
+   </target>
+
+
+</project>
