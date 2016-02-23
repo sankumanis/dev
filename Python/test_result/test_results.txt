@@ -1,0 +1,23 @@
+testHelloNameDefault (testHelloWorld.TestHelloWorld) ... ok
+testHelloNameEquals (testHelloWorld.TestHelloWorld) ... ok
+testHelloNameNotEquals (testHelloWorld.TestHelloWorld) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK
+E...
+======================================================================
+ERROR: testCommandLineOptionDateDefault (testCommandLineOptions.TestCommandLineOptions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/workspace/Python/tests/testCommandLineOptions.py", line 18, in testCommandLineOptionDateDefault
+    self.assertEqual(time.strftime("%Y%m%d"), code.defaultDate())
+  File "../src/commandLineOptions.py", line 27, in defaultDate
+    return options.tradeDate
+AttributeError: 'NoneType' object has no attribute 'tradeDate'
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+FAILED (errors=1)

@@ -5,6 +5,8 @@
     <property name="dist" value="${basedir}/target" />
     <property name="src.dir" value="${basedir}/src" />
     <property name="config.dir" value="${basedir}/config" />
+    <property name="test.dir" value="${basedir}/tests" />
+    <property name="test.result.dir" value="${basedir}/test_result" />
     <target name="info">
         <echo>Hello World from [ ${ant.file} ]. developed by [ ${userName} ]</echo>
         <echo>User's last name = [${user.last.name}]</echo>
@@ -33,6 +35,14 @@
    <target name="clean">
        <delete dir="target"/>
        
+   </target>
+   
+   <target name="test">
+       <echo>Executing python unittest</echo>
+       <exec dir="${test.dir}" executable="/usr/bin/python" output="${test.result.dir}/test_results.txt" failonerror="true" >
+           <arg line="-m unittest discover -s ${test.dir} -p test*.py" />
+          
+       </exec>
    </target>
 
 

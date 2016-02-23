@@ -3,6 +3,8 @@
 from optparse import OptionParser
 import time
 
+options = None
+
 def init():
     parser = OptionParser()
     parser.add_option("-c", "--config", dest="configFile", help="config file path")
@@ -12,6 +14,7 @@ def init():
     return parser
 
 def main():
+    global options
     
     parser = init()
     (options, args) = parser.parse_args()
@@ -19,7 +22,9 @@ def main():
     print "You selected date = " + options.tradeDate
     if (options.sendEmail):
         print "You selected sendEmail = " + str(options.sendEmail)
-    
+
+def defaultDate():
+    return options.tradeDate
 
 if __name__ == '__main__' :
     main()
